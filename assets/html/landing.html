@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <title>asset-hoster</title>
+
+    <style>
+        @font-face {
+            font-family: Metropolis;
+            src: url(https://github.com/chrismsimpson/Metropolis/blob/master/Metropolis-Regular.otf?raw=true);
+        }
+
+        .container {
+            margin: 100px;
+        }
+
+        body {
+            font-family: Metropolis;
+            font-size: 32px;
+        }
+
+        header {
+            overflow: hidden;
+            padding: 20px 0;
+            margin-left: 10%;
+            display: block;
+            animation: header-fadein 1s;
+        }
+
+        .header-links {
+            font-family: 'Nunito', sans-serif;
+            font-size: 28px;
+            letter-spacing: -1px;
+            color: #212121;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .button-box {
+            width: 175px;
+            height: 175px;
+            /*border: 1px solid #607d8b;*/
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 2px 2px 10px 0 #f48fb1;
+            margin-right: 20px;
+            font-size: 24px;
+        }
+
+        .button-box:hover {
+            box-shadow: 3px 3px 10px 0 #f48fb1;
+        }
+
+        .buttons {
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <div>
+    </div>
+</header>
+
+<div class="container">
+    <h1><b>asset-hoster</b></h1>
+    <p>
+        There are 220 files hosted in this instance.
+    </p>
+
+    <div class="buttons">
+        <div class="button-box">
+            <i class="material-icons" style="font-size: 48px;">file_upload</i>
+            <br/>
+            Upload a File
+        </div>
+        <div class="button-box">
+            <i class="material-icons" style="font-size: 48px;">view_comfy</i>
+            <br/>
+            View Hosted Files
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+</html>

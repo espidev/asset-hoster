@@ -2,21 +2,23 @@ package main
 
 import (
 	"io/ioutil"
+	"github.com/BurntSushi/toml"
 	"log"
 	"os"
 )
 
 type Config struct {
 	Port int
+	Secret string
+	Domain string
+	Debug bool
 }
 
 const (
 	ConfigLocation = "./config.toml"
 	DefaultConfig  = `
-SiteName = "espidev"
 Port = 3000
-AdminRoute = "/admin/"
-Secret = "hithisisnice"
+Secret = "notsecret"
 Domain = "localhost"
 Debug = true
 `)

@@ -17,6 +17,7 @@ import (
 var (
 	router *gin.Engine
 	config Config
+	users []*User
 )
 
 const (
@@ -85,4 +86,18 @@ func main() {
 		log.Fatal("Server shutdown: ", err)
 	}
 	log.Println("asset-hoster has stopped.")
+}
+
+func setupRoutes() {
+	router.Use(gin.Logger())
+	router.Use(gin.Recovery())
+
+	router.Static("/css", RootFolder + "/assets/css")
+	router.Static("/js", RootFolder + "/assets/js")
+	router.Static("/images", RootFolder + "/assets/images")
+
+	router.LoadHTMLGlob(RootFolder+"/assets/html/*")
+	router.NoRoute(func(c *gin.Context) {
+		c.HTML(404, "404.html", gin.H{})
+	})
 }
