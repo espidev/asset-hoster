@@ -28,6 +28,10 @@ func main() {
 	log.Println("Starting asset-hoster...")
 	log.Println("This program comes with ABSOLUTELY NO WARRANTY;\nThis is free software, and you are welcome to redistribute it under certain conditions.")
 
+	setupConfig()
+
+	os.RemoveAll(RootFolder + "/assets") // TODO make it configurable
+
 	// write binary files to disk
 	err := vfsutil.WalkFiles(assets, "/", func(path string, fi os.FileInfo, r io.ReadSeeker, err error) error {
 		if err != nil {
@@ -95,9 +99,14 @@ func setupRoutes() {
 	router.Static("/css", RootFolder + "/assets/css")
 	router.Static("/js", RootFolder + "/assets/js")
 	router.Static("/images", RootFolder + "/assets/images")
+	router.Static("/assets", RootFolder + "/assets/assets")
 
 	router.LoadHTMLGlob(RootFolder+"/assets/html/*")
 	router.NoRoute(func(c *gin.Context) {
 		c.HTML(404, "404.html", gin.H{})
+	})
+
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "landing.html", gin.H {})
 	})
 }

@@ -9,7 +9,12 @@
     <style>
         @font-face {
             font-family: Metropolis;
-            src: url(https://github.com/chrismsimpson/Metropolis/blob/master/Metropolis-Regular.otf?raw=true);
+            src: url(/assets/Metropolis-Regular.woff2);
+        }
+
+        @font-face {
+            font-family: Metropolis-Bold;
+            src: url(/assets/Metropolis-Bold.woff2);
         }
 
         .container {
@@ -46,16 +51,46 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 2px 2px 10px 0 #f48fb1;
-            margin-right: 20px;
+            margin-right: 40px;
             font-size: 24px;
         }
 
         .button-box:hover {
-            box-shadow: 3px 3px 10px 0 #f48fb1;
+            animation: 1s button-hover infinite;
+        }
+
+        @keyframes button-hover {
+            50% {
+                transform: translateY(-10px);
+                box-shadow: 4px 4px 20px 0 #f48fb1;
+            }
+            100% {
+                transform: translateY(0);
+                box-shadow: 2px 2px 10px 0 #f48fb1;
+            }
         }
 
         .buttons {
             display: flex;
+        }
+
+        @keyframes words-in {
+            0% {
+                transform: translateY(40px);
+                opacity: 0
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .words {
+            animation: 1.3s words-in;
+        }
+
+        .buttons {
+            animation: 2s words-in;
         }
     </style>
 
@@ -69,10 +104,12 @@
 </header>
 
 <div class="container">
-    <h1><b>asset-hoster</b></h1>
-    <p>
-        There are 220 files hosted in this instance.
-    </p>
+    <div class="words">
+        <h1><span style="font-family: Metropolis-Bold;">asset-hoster</span></h1>
+        <p>
+            There are 220 files hosted in this instance.
+        </p>
+    </div>
 
     <div class="buttons">
         <div class="button-box">
@@ -84,6 +121,11 @@
             <i class="material-icons" style="font-size: 48px;">view_comfy</i>
             <br/>
             View Hosted Files
+        </div>
+        <div class="button-box">
+            <i class="material-icons" style="font-size: 48px;">settings</i>
+            <br/>
+            Settings
         </div>
     </div>
 </div>
