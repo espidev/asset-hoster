@@ -107,6 +107,22 @@ func setupRoutes() {
 	})
 
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "landing.html", gin.H {})
+		c.HTML(http.StatusOK, "landing.html", gin.H{})
+	})
+
+	router.GET("/upload", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "upload.html", gin.H{})
+	})
+
+	router.GET("/settings", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "settings.html", gin.H{})
+	})
+
+	router.GET("/manage", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "manage.html", gin.H{})
+	})
+
+	router.GET("/login", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "login.html", gin.H{})
 	})
 }

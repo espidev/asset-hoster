@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito" rel="stylesheet">
+
+    <title>asset-hoster - Login</title>
+
+    <style>
+        @font-face {
+            font-family: Metropolis;
+            src: url(/assets/Metropolis-Regular.woff2);
+        }
+
+        @font-face {
+            font-family: Metropolis-Bold;
+            src: url(/assets/Metropolis-Bold.woff2);
+        }
+
+        .container {
+            margin: 100px;
+            display: block;
+            float: left;
+            font-family: Metropolis, sans-serif;
+            font-size: 24px;
+        }
+
+        .inputbox {
+            padding: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 20px;
+            border-style: none;
+            border-left-style: solid;
+            border-width: 5px;
+            border-color: #18ffff;
+            animation-name: fadeIn;
+            animation-duration: 1.5s;
+        }
+
+        .inputbox:focus {
+            outline: 0;
+        }
+
+        #login {
+            padding: 10px;
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 10px;
+            border-style: solid;
+            border-color: #FFFFFF;
+            border-width: 1px;
+            animation: 1.5s fadeIn;
+            color: #FFFFFF;
+            width: 270px;
+            background-color: #e91e63;
+            position: absolute;
+        }
+        #usernameBox {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        #passwordBox {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        #login:focus {
+            outline: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="POST">
+            <h1>login <i class="material-icons">sync</i></h1>
+            <input type="text" id="usernameBox" name="username" placeholder="username" required class="inputbox">
+            <br/>
+            <input type="password" id="passwordBox" name="password" placeholder="password" required class="inputbox">
+            <br/>
+            <br/>
+            <input type="submit" id="login">
+        </form>
+    </div>
+</body>
+</html>
