@@ -17,7 +17,7 @@ import (
 var (
 	router *gin.Engine
 	config Config
-	users []*User
+	users []*IUser
 )
 
 const (
@@ -124,5 +124,9 @@ func setupRoutes() {
 
 	router.GET("/login", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "login.html", gin.H{})
+	})
+
+	router.GET("/files/:route", func(c *gin.Context) {
+
 	})
 }

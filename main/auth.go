@@ -68,7 +68,7 @@ func AuthRequired() gin.HandlerFunc {
 			return
 		}
 
-		var user *User
+		var user *IUser
 
 		for _, userf := range users {
 			if userf.UserName == claims["id"].(string) {
@@ -78,7 +78,7 @@ func AuthRequired() gin.HandlerFunc {
 
 		if user == nil {
 			if config.Debug {
-				log.Println("[Token] User not found.")
+				log.Println("[Token] IUser not found.")
 			}
 			c.Redirect(302, "/login")
 			c.Abort()
