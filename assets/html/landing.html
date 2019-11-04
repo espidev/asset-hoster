@@ -24,6 +24,11 @@
         body {
             font-family: Metropolis;
             font-size: 32px;
+            background: url("/images/login-background.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
 
         header {
@@ -53,6 +58,8 @@
             box-shadow: 2px 2px 10px 0 #f48fb1;
             margin-right: 40px;
             font-size: 24px;
+            background-color: white;
+            cursor: pointer;
         }
 
         .button-box:hover {
@@ -70,10 +77,6 @@
             }
         }
 
-        .buttons {
-            display: flex;
-        }
-
         @keyframes words-in {
             0% {
                 transform: translateY(40px);
@@ -85,12 +88,20 @@
             }
         }
 
+        @keyframes blur-out {
+            100% {
+                filter: blur(0);
+            }
+        }
+
         .words {
             animation: 1.3s words-in;
         }
 
         .buttons {
-            animation: 2s words-in;
+            animation: 2s words-in, 2s blur-out forwards;
+            display: flex;
+            filter: blur(1px);
         }
     </style>
 

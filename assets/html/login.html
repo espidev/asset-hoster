@@ -24,6 +24,7 @@
             float: left;
             font-family: Metropolis, sans-serif;
             font-size: 24px;
+            animation: 2s words-in;
         }
 
         .inputbox {
@@ -45,17 +46,37 @@
         #login {
             padding: 10px;
             border-radius: 50px;
-            font-family: 'Nunito', sans-serif;
-            font-size: 10px;
+            font-family: 'Metropolis', sans-serif;
+            font-size: 18px;
             border-style: solid;
             border-color: #FFFFFF;
-            border-width: 1px;
-            animation: 1.5s fadeIn;
+            border-width: 2px;
+            animation: 1.5s fadeIn, 1s button-unhover;
             color: #FFFFFF;
-            width: 270px;
             background-color: #e91e63;
             position: absolute;
+            width: 290px;
+            cursor: pointer;
+            box-shadow: 1px 1px 5px 0 #e91e63;
+            transition: box-shadow 0.5s;
         }
+
+        #login:hover {
+            box-shadow: 1px 1px 15px 0 #e91e63;
+            transition: box-shadow 0.5s;
+        }
+
+        .boxes {
+            box-shadow: 1px 1px 7px 0 #e91e63;
+            border-radius: 7px;
+            transition: box-shadow 0.5s;
+        }
+
+        .boxes:hover {
+            box-shadow: 1px 1px 20px 0 #e91e63;
+            transition: box-shadow 0.5s;
+        }
+
         #usernameBox {
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
@@ -68,18 +89,39 @@
             outline: 0;
         }
 
+        body {
+            background: url("/images/login-background.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        @keyframes words-in {
+            0% {
+                transform: translateY(40px);
+                opacity: 0
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <form method="POST">
             <h1>login <i class="material-icons">sync</i></h1>
+            <div class="boxes">
             <input type="text" id="usernameBox" name="username" placeholder="username" required class="inputbox">
             <br/>
             <input type="password" id="passwordBox" name="password" placeholder="password" required class="inputbox">
+            </div>
             <br/>
             <br/>
-            <input type="submit" id="login">
+            <input type="submit" id="login" value="login">
         </form>
     </div>
 </body>
