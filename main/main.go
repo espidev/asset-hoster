@@ -17,11 +17,12 @@ import (
 var (
 	router *gin.Engine
 	config Config
-	users []*IUser
+	db IDatabase
 )
 
 const (
 	RootFolder = "."
+	UploadsFolder = "./files"
 )
 
 func main() {
@@ -29,6 +30,7 @@ func main() {
 	log.Println("This program comes with ABSOLUTELY NO WARRANTY;\nThis is free software, and you are welcome to redistribute it under certain conditions.")
 
 	setupConfig()
+	LoadDB()
 
 	os.RemoveAll(RootFolder + "/assets") // TODO make it configurable
 
@@ -103,30 +105,54 @@ func setupRoutes() {
 
 	router.LoadHTMLGlob(RootFolder+"/assets/html/*")
 	router.NoRoute(func(c *gin.Context) {
-		c.HTML(404, "404.html", gin.H{})
+		c.HTML(http.StatusNotFound, "404.html", gin.H{})
 	})
 
-	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "landing.html", gin.H{})
+	admin := router.Group("/")
+	admin.Use(AuthRequired())
+
+	admin.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "landing.html", gin.H{
+			"numberOfFiles": len(db.Files),
+		})
 	})
 
-	router.GET("/upload", func(c *gin.Context) {
+	admin.GET("/upload", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "upload.html", gin.H{})
 	})
 
-	router.GET("/settings", func(c *gin.Context) {
+	admin.POST("/upload", UploadFile)
+
+	admin.GET("/settings", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "settings.html", gin.H{})
 	})
 
-	router.GET("/manage", func(c *gin.Context) {
+	admin.GET("/manage", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "manage.html", gin.H{})
 	})
+
+	admin.GET("/logout", func(c *gin.Context) {
+		c.SetCookie("GOSESSID", "", 0, "/", config.Domain, false, false)
+		c.Redirect(302, "login")
+	})
+
+	// non-admin routes
 
 	router.GET("/login", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "login.html", gin.H{})
 	})
 
-	router.GET("/files/:route", func(c *gin.Context) {
+	router.POST("/login", AuthRoute)
 
-	})
+	router.GET("/files/:route", ServeFile)
+}
+
+func GetFileContentType(out *os.File) (string, error) {
+	buffer := make([]byte, 512)
+	_, err := out.Read(buffer)
+	if err != nil {
+		return "", err
+	}
+	contentType := http.DetectContentType(buffer)
+	return contentType, nil
 }

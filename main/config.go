@@ -24,6 +24,12 @@ Debug = true
 `)
 
 func setupConfig() {
+	if _, err := os.Stat(UploadsFolder); os.IsNotExist(err) {
+		err := os.Mkdir(UploadsFolder, 0644)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
 	if _, err := os.Stat(ConfigLocation); os.IsNotExist(err) {
 		err := ioutil.WriteFile(ConfigLocation, []byte(DefaultConfig), 0644)
 		if err != nil {
