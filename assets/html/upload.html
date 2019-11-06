@@ -23,16 +23,150 @@
         }
 
         body {
-            background-image: url("/images/login-background.jpg");
+            font-family: Metropolis;
+            font-size: 28px;
+            background: url("/images/login-background.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        @keyframes words-in {
+            0% {
+                transform: translateY(40px);
+                opacity: 0
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes blur-out {
+            100% {
+                filter: blur(0);
+            }
+        }
+
+        #modeSelection {
+            animation: 2s words-in, 2s blur-out forwards;
+            display: flex;
+            filter: blur(1px);
+        }
+
+        .button-box {
+            width: 150px;
+            height: 150px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 2px 2px 10px 0 #f48fb1;
+            margin-right: 40px;
+            font-size: 20px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .button-box:hover {
+            animation: 1s button-hover infinite;
+        }
+
+        @keyframes button-hover {
+            50% {
+                transform: translateY(-10px);
+                box-shadow: 4px 4px 20px 0 #f48fb1;
+            }
+            100% {
+                transform: translateY(0);
+                box-shadow: 2px 2px 10px 0 #f48fb1;
+            }
+        }
+
+        .hiddenForm {
+            display: none;
+            opacity: 0;
+        }
+
+        @keyframes fade-out {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #modeSelection.hideTransition {
+            animation: fade-out 0.5s forwards;
+        }
+
+        .hiddenForm.showTransition {
+            animation: fade-in 0.5s forwards;
+        }
+
+        .inputfile {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .inputfile + label {
+            padding: 10px;
+            border-radius: 50px;
+            font-family: 'Metropolis', sans-serif;
+            font-size: 18px;
+            border-style: solid;
+            border-color: #FFFFFF;
+            border-width: 2px;
+            color: #FFFFFF;
+            background-color: #e91e63;
+            position: absolute;
+            width: 270px;
+            cursor: pointer;
+            box-shadow: 1px 1px 5px 0 #e91e63;
+        }
+
+        .inputfile:focus + label,
+        .inputfile + label:hover {
+            box-shadow: 1px 1px 15px 0 #e91e63;
+            transition: box-shadow 0.5s;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
+
+    <div id="modeSelection">
+        <div class="button-box" onclick="showUseUpload()">
+            <i class="material-icons" style="font-size: 48px;">file_upload</i>
+            <br/>
+            Upload a File
+        </div>
+        <div class="button-box" onclick="showUseExisting()">
+            <i class="material-icons" style="font-size: 48px;">insert_drive_file</i>
+            <br/>
+            Use Existing File
+        </div>
+    </div>
+
+    <div id="useUpload" class="hiddenForm">
         <form method="POST">
             <ul>
                 <li>
-                    Select a File: <input type="file" name="file">
+                    <input type="file" name="file" class="inputfile">
+                    <label for="file" class="center">Select a File</label>
                 </li>
                 <li>
 
@@ -40,5 +174,38 @@
             </ul>
         </form>
     </div>
+
+    <div id="useExisting" class="hiddenForm">
+        <form method="POST">
+            <ul>
+                <li>
+                    yep
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+<script>
+    function showUseUpload() {
+        document.getElementById("modeSelection").classList.add("hideTransition");
+        setTimeout(function () {
+            document.getElementById("modeSelection").style.display = "none";
+            document.getElementById("useUpload").style.display = "block";
+            document.getElementById("useUpload").classList.add("showTransition");
+        }, 500);
+    }
+    function showUseExisting() {
+        document.getElementById("modeSelection").classList.add("hideTransition");
+        setTimeout(function () {
+            document.getElementById("modeSelection").style.display = "none";
+            document.getElementById("useExisting").style.display = "block";
+            document.getElementById("useExisting").classList.add("showTransition");
+        }, 500);
+    }
+</script>
 </body>
 </html>

@@ -37,6 +37,7 @@
             border-color: #18ffff;
             animation-name: fadeIn;
             animation-duration: 1.5s;
+            width: 270px;
         }
 
         .inputbox:focus {
@@ -55,10 +56,11 @@
             color: #FFFFFF;
             background-color: #e91e63;
             position: absolute;
-            width: 290px;
+            width: 270px;
             cursor: pointer;
             box-shadow: 1px 1px 5px 0 #e91e63;
             transition: box-shadow 0.5s;
+            box-sizing: content-box;
         }
 
         #login:hover {
@@ -112,6 +114,19 @@
 </head>
 <body>
     <div class="container">
+
+        <!--{{ if .noUser }}-->
+        <div class="success">
+            No such user!
+        </div>
+        <!--{{ end }}-->
+
+        <!--{{ if .incorrectPassword }}-->
+        <div class="success">
+            Incorrect password!
+        </div>
+        <!--{{ end }}-->
+
         <form method="POST">
             <h1>login <i class="material-icons">sync</i></h1>
             <div class="boxes">
