@@ -25,7 +25,7 @@ Debug = true
 
 func setupConfig() {
 	if _, err := os.Stat(UploadsFolder); os.IsNotExist(err) {
-		err := os.Mkdir(UploadsFolder, 0644)
+		err := os.Mkdir(UploadsFolder, 0755)
 		if err != nil {
 			log.Fatal(err)
 		}

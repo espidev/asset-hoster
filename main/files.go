@@ -4,18 +4,16 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
-	"mime/multipart"
 	"net/http"
 	"os"
 	"time"
 )
 
 type UploadReq struct {
-	FileLocation string `form:"file_location" binding:"required"`
-	DownloadOnLoad bool `form:"download_on_load" binding:"required"`
-	WebRoute string `form:"web_route" binding:"required"`
-	LocationFromRoot bool `form:"location_from_root" binding:"required"`
-	File *multipart.FileHeader `form:"file"`
+	FileLocation string `form:"file_location" json:"file_location" binding:"required"`
+	DownloadOnLoad string `form:"download_on_load" json:"download_on_load"`
+	WebRoute string `form:"web_route" binding:"required" json:"web_route"`
+	LocationFromRoot string `form:"location_from_root" json:"location_from_route"`
 }
 
 func UploadFile(c *gin.Context) {
@@ -24,25 +22,33 @@ func UploadFile(c *gin.Context) {
 
 	if err := c.ShouldBind(&form); err != nil {
 		c.HTML(http.StatusBadRequest, "500.html", gin.H{"error": err.Error()})
+		log.Println("400: " + err.Error())
 		return
 	}
 
-	if !form.LocationFromRoot {
+	f, err := c.FormFile("file")
+	if err != nil {
+		c.HTML(http.StatusBadRequest, "500.html", gin.H{"error": err.Error()})
+		log.Println("400 file: " + err.Error())
+		return
+	}
+
+	if form.LocationFromRoot != "on" {
 		form.FileLocation = UploadsFolder + "/" + form.FileLocation
 	}
 
 	file := IFile{
 		FileLocation:   form.FileLocation,
-		DownloadOnLoad: form.DownloadOnLoad,
+		DownloadOnLoad: form.DownloadOnLoad == "on",
 		WebRoute:       form.WebRoute,
 		DateCreated:    time.Now().Unix(),
 	}
 
-	if form.File == nil {
-		err := c.SaveUploadedFile(form.File, form.FileLocation)
+	if f != nil {
+		err := c.SaveUploadedFile(f, form.FileLocation)
 		if err != nil {
 			c.HTML(http.StatusInternalServerError, "500.html", gin.H{})
-			_, _ = fmt.Fprintf(os.Stderr, err.Error())
+			_, _ = fmt.Fprintf(os.Stderr, err.Error() + "\n")
 			return
 		}
 	}

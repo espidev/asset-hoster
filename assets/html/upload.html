@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito" rel="stylesheet">
 
     <meta charset="UTF-8">
     <title>asset-hoster - Upload File</title>
@@ -18,12 +18,17 @@
             src: url(/assets/Metropolis-Bold.woff2);
         }
 
+        h1 {
+            font-size: 64px;
+            color: #FFFFFF;
+        }
+
         .container {
             margin: 100px;
         }
 
         body {
-            font-family: Metropolis;
+            font-family: Metropolis, sans-serif;
             font-size: 28px;
             background: url("/images/login-background.jpg") no-repeat center center fixed;
             -webkit-background-size: cover;
@@ -56,8 +61,8 @@
         }
 
         .button-box {
-            width: 150px;
-            height: 150px;
+            width: 125px;
+            height: 125px;
             padding: 15px;
             border-radius: 10px;
             text-align: center;
@@ -66,10 +71,13 @@
             font-size: 20px;
             background-color: white;
             cursor: pointer;
+            line-height: 1.5;
+            transform: translateY(0);
+            transition: box-shadow 0.5s, transform 0.5s;
         }
 
         .button-box:hover {
-            animation: 1s button-hover infinite;
+            animation: 1s button-hover infinite forwards;
         }
 
         @keyframes button-hover {
@@ -86,6 +94,7 @@
         .hiddenForm {
             display: none;
             opacity: 0;
+            line-height: 1.5;
         }
 
         @keyframes fade-out {
@@ -96,6 +105,7 @@
                 opacity: 0;
             }
         }
+
         @keyframes fade-in {
             0% {
                 opacity: 0;
@@ -113,33 +123,161 @@
             animation: fade-in 0.5s forwards;
         }
 
-        .inputfile {
-            color: transparent;
+        input[type="text"] {
+            margin: 3px 3px 3px 0;
+            padding: 10px;
+            outline: none;
+            border-radius: 5px;
+            font-family: 'Nunito', sans-serif;
+            border-style: none;
+            font-size: 20px;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.3);
+            transition: box-shadow 0.5s, background 0.5s;
         }
-        .inputfile::-webkit-file-upload-button {
-            visibility: hidden;
+
+        input[type="text"]:hover {
+            box-shadow: 1px 1px 5px 0 #FFFFFF;
+            background: rgba(255, 255, 255, 0.6);
+            transition: box-shadow 0.5s, background 0.5s;
         }
-        .inputfile::before {
-            content: 'Select a File';
+
+        input[type="text"]:focus {
+            box-shadow: 1px 1px 5px 0 #FFFFFF;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+            margin-top: 40px;
+            padding: 10px;
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 18px;
+            border-style: solid;
+            border-color: #FFFFFF;
+            border-width: 2px;
+            background-color: #424242;
+            width: 200px;
+            line-height: 1;
+            text-align: center;
+            color: white;
+            transition: box-shadow 0.5s;
+        }
+
+        input[type="submit"]:hover {
+            box-shadow: 1px 1px 15px 0 #FFFFFF;
+            transition: box-shadow 0.5s;
+        }
+
+        label {
+            font-size: 20px;
+            font-family: Nunito, sans-serif;
+            line-height: 1.5;
+            color: white;
+        }
+
+        .fileUploadBox {
             display: inline-block;
             -webkit-user-select: none;
             cursor: pointer;
             padding: 10px;
             border-radius: 50px;
-            font-family: 'Metropolis', sans-serif;
+            font-family: 'Nunito', sans-serif;
             font-size: 18px;
             border-style: solid;
             border-color: #FFFFFF;
             border-width: 2px;
             color: #FFFFFF;
-            background-color: #009688;
-            width: 270px;
+            background-color: #424242;
+            width: 200px;
             text-align: center;
-            box-shadow: 1px 1px 5px 0 #009688;
-        }
-        .inputfile:hover::before {
-            box-shadow: 1px 1px 15px 0 #009688;
+            line-height: 1;
             transition: box-shadow 0.5s;
+        }
+
+        .fileUploadBox:hover {
+            box-shadow: 1px 1px 15px 0 #FFFFFF;
+            transition: box-shadow 0.5s;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .inputContainer {
+            margin-top: 20px;
+        }
+
+        /* ----- switch ----- */
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 14px;
+            top: 8px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(204, 204, 204, 0.3);
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            bottom: -6px;
+            background-color: rgba(255,255,255,0.5);
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: rgba(66, 66, 66, 0.8);
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px rgba(66, 66, 66, 0.8);
+        }
+
+        .slider {
+            transition: box-shadow 0.5s;
+        }
+
+        .slider:active {
+            box-shadow: 1px 1px 15px 0 #FFFFFF;
+            transition: box-shadow 0.1s;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+            background-color: rgba(255,255,255,1);
+            box-shadow: 1px 1px 10px 0 #FFFFFF;
+            transition: .4s;
         }
 
     </style>
@@ -161,26 +299,55 @@
     </div>
 
     <div id="useUpload" class="hiddenForm">
-        <form method="POST">
-            <ul>
-                <li>
-                    <input type="file" name="file" class="inputfile">
-                </li>
-                <li>
-                    <input type="text" name="file_location">
-                </li>
-                <li>
-                    <input type="text" name="web_route">
-                </li>
-                <li>
-                    <label>
-                        <input type="text" name="file_location">
-                    </label>
-                </li>
-                <li>
-                    <input type="text" name="location_from_root">
-                </li>
-            </ul>
+
+        <h1><span style="font-family: Metropolis-Bold, sans-serif;">upload a file</span></h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file-upload" class="fileUploadBox">
+                Select a File
+            </label>
+            <input type="file" name="file" id="file-upload"/>
+
+            <br/><br/>
+
+            <div class="inputContainer">
+                <label for="file_location">
+                    Storage location
+                </label>
+                <br/>
+                <input type="text" id="file_location" name="file_location" placeholder="/storage/...">
+            </div>
+
+            <div class="inputContainer">
+                <label for="web_route">
+                    Web route
+                </label>
+                <br/>
+                <input type="text" id="web_route" name="web_route" placeholder="/files/...">
+            </div>
+
+
+            <div class="inputContainer">
+                <label style="margin-right: 30px;">
+                    Location from root
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="location_from_root" id="location_from_root">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="inputContainer">
+                <label style="margin-right: 30px;">
+                    Download automatically
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="download_on_load" id="download_on_load">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <input type="submit" value="Submit"/>
         </form>
     </div>
 
@@ -207,6 +374,7 @@
             document.getElementById("useUpload").classList.add("showTransition");
         }, 500);
     }
+
     function showUseExisting() {
         document.getElementById("modeSelection").classList.add("hideTransition");
         setTimeout(function () {

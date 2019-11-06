@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-var routeCache map[string]*IFile
+var routeCache = make(map[string]*IFile)
 
 const (
 	DBLocation = "./db.json"
