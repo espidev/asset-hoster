@@ -114,15 +114,16 @@
         }
 
         .inputfile {
-            width: 0.1px;
-            height: 0.1px;
-            opacity: 0;
-            overflow: hidden;
-            position: absolute;
-            z-index: -1;
+            color: transparent;
         }
-
-        .inputfile + label {
+        .inputfile::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+        .inputfile::before {
+            content: 'Select a File';
+            display: inline-block;
+            -webkit-user-select: none;
+            cursor: pointer;
             padding: 10px;
             border-radius: 50px;
             font-family: 'Metropolis', sans-serif;
@@ -131,18 +132,16 @@
             border-color: #FFFFFF;
             border-width: 2px;
             color: #FFFFFF;
-            background-color: #e91e63;
-            position: absolute;
+            background-color: #009688;
             width: 270px;
-            cursor: pointer;
-            box-shadow: 1px 1px 5px 0 #e91e63;
+            text-align: center;
+            box-shadow: 1px 1px 5px 0 #009688;
         }
-
-        .inputfile:focus + label,
-        .inputfile + label:hover {
-            box-shadow: 1px 1px 15px 0 #e91e63;
+        .inputfile:hover::before {
+            box-shadow: 1px 1px 15px 0 #009688;
             transition: box-shadow 0.5s;
         }
+
     </style>
 </head>
 <body>
@@ -166,7 +165,7 @@
             <ul>
                 <li>
                     <input type="file" name="file" class="inputfile">
-                    <label for="file" class="center">Select a File</label>
+{{/*                    <label for="file">Select a File</label>*/}}
                 </li>
                 <li>
 
