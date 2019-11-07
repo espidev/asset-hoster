@@ -128,7 +128,7 @@ func setupRoutes() {
 	})
 
 	admin.GET("/manage", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "manage.html", gin.H{})
+		c.HTML(http.StatusOK, "manage.html", db.Files)
 	})
 
 	admin.GET("/logout", func(c *gin.Context) {

@@ -352,15 +352,48 @@
     </div>
 
     <div id="useExisting" class="hiddenForm">
-        <form method="POST">
-            <ul>
-                <li>
-                    yep
-                </li>
-                <li>
+        <h1><span style="font-family: Metropolis-Bold, sans-serif;">use file on server</span></h1>
 
-                </li>
-            </ul>
+        <form method="POST" enctype="multipart/form-data">
+
+            <div class="inputContainer">
+                <label for="file_location">
+                    File location
+                </label>
+                <br/>
+                <input type="text" id="file_location" name="file_location" placeholder="/storage/...">
+            </div>
+
+            <div class="inputContainer">
+                <label for="web_route">
+                    Web route
+                </label>
+                <br/>
+                <input type="text" id="web_route" name="web_route" placeholder="/files/...">
+            </div>
+
+
+            <div class="inputContainer">
+                <label style="margin-right: 30px;">
+                    Location from root
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="location_from_root" id="location_from_root">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="inputContainer">
+                <label style="margin-right: 30px;">
+                    Download automatically
+                </label>
+                <label class="switch">
+                    <input type="checkbox" name="download_on_load" id="download_on_load">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <input type="submit" value="Submit"/>
         </form>
     </div>
 </div>

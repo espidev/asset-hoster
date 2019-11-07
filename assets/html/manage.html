@@ -1,10 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito" rel="stylesheet">
+
     <meta charset="UTF-8">
     <title>asset-hoster - Manage Files</title>
+
+    <style>
+        @font-face {
+            font-family: Metropolis;
+            src: url(/assets/Metropolis-Regular.woff2);
+        }
+
+        @font-face {
+            font-family: Metropolis-Bold;
+            src: url(/assets/Metropolis-Bold.woff2);
+        }
+
+        h1 {
+            font-size: 64px;
+            color: #FFFFFF;
+        }
+
+        @keyframes words-in {
+            0% {
+                transform: translateY(40px);
+                opacity: 0
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes blur-out {
+            100% {
+                filter: blur(0);
+            }
+        }
+
+        .container {
+            margin: 100px;
+        }
+
+        h1 {
+            animation: words-in 1s;
+        }
+
+        body {
+            font-family: Metropolis, sans-serif;
+            font-size: 28px;
+            background: url("/images/login-background.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        @keyframes words-in {
+            0% {
+                transform: translateY(40px);
+                opacity: 0
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes blur-out {
+            100% {
+                filter: blur(0);
+            }
+        }
+
+        @keyframes button-hover {
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .files {
+            animation: words-in 1.5s;
+        }
+
+        a {
+            width: 50%;
+            padding: 15px;
+            height: 20px;
+            outline: none;
+            border-radius: 5px;
+            font-family: 'Metropolis', sans-serif;
+            border-style: none;
+            font-size: 20px;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.3);
+            transition: box-shadow 0.5s, background 0.5s;
+            text-decoration: none;
+            display: block;
+            color: white;
+            margin: 20px 20px 20px;
+        }
+
+        a:hover {
+            box-shadow: 1px 1px 5px 0 #FFFFFF;
+            background: rgba(255, 255, 255, 0.6);
+            transition: box-shadow 0.5s, background 0.5s;
+            animation: button-hover 1s infinite;
+        }
+
+        .route {
+            float: left;
+        }
+
+        .time {
+            float: right;
+        }
+
+    </style>
 </head>
 <body>
-
+<div class="container">
+    <h1><span style="font-family: Metropolis-Bold, sans-serif;">manage files</span></h1>
+    <div class="files">
+    {{ range . }}
+        <a href="/files/{{.WebRoute}}">
+            <div class="route">
+                <b>files/{{ .WebRoute }} -> {{ .FileLocation }}</b>
+            </div>
+            <div class="time">
+                <script>
+                    document.write(new Date(1000 * {{ .DateCreated }}).getMonth() + "/" + new Date(1000 * {{ .DateCreated }}).getDay() + "/" + new Date(1000 * {{ .DateCreated }}).getFullYear())
+                </script>
+            </div>
+        </a>
+    {{end}}
+    </div>
+</div>
 </body>
 </html>
