@@ -1,22 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito" rel="stylesheet">
+    <link href="/css/custom-fonts.css" rel="stylesheet">
 
     <meta charset="UTF-8">
     <title>asset-hoster - Manage Files</title>
 
     <style>
-        @font-face {
-            font-family: Metropolis;
-            src: url(/assets/Metropolis-Regular.woff2);
-        }
-
-        @font-face {
-            font-family: Metropolis-Bold;
-            src: url(/assets/Metropolis-Bold.woff2);
-        }
 
         h1 {
             font-size: 64px;
@@ -49,7 +39,7 @@
         }
 
         body {
-            font-family: Metropolis, sans-serif;
+            font-family: Metropolis-asset, sans-serif;
             font-size: 28px;
             background: url("/images/login-background.jpg") no-repeat center center fixed;
             -webkit-background-size: cover;
@@ -94,7 +84,7 @@
             height: 20px;
             outline: none;
             border-radius: 5px;
-            font-family: 'Metropolis', sans-serif;
+            font-family: 'Metropolis-asset', sans-serif;
             border-style: none;
             font-size: 20px;
             backdrop-filter: blur(4px);
@@ -125,7 +115,7 @@
 </head>
 <body>
 <div class="container">
-    <h1><span style="font-family: Metropolis-Bold, sans-serif;">manage files</span></h1>
+    <h1><span style="font-family: Metropolis-Bold-asset, sans-serif;">manage files</span></h1>
     <div class="files">
     {{ range . }}
         <a href="/files/{{.WebRoute}}">

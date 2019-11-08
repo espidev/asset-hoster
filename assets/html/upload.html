@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito" rel="stylesheet">
+    <link href="/css/custom-fonts.css" rel="stylesheet">
+    <link href="/css/simple-animations.css" rel="stylesheet">
 
     <meta charset="UTF-8">
     <title>asset-hoster - Upload File</title>
 
     <style>
-        @font-face {
-            font-family: Metropolis;
-            src: url(/assets/Metropolis-Regular.woff2);
-        }
-
-        @font-face {
-            font-family: Metropolis-Bold;
-            src: url(/assets/Metropolis-Bold.woff2);
-        }
 
         h1 {
             font-size: 64px;
@@ -28,7 +19,7 @@
         }
 
         body {
-            font-family: Metropolis, sans-serif;
+            font-family: Metropolis-asset, sans-serif;
             font-size: 28px;
             background: url("/images/login-background.jpg") no-repeat center center fixed;
             -webkit-background-size: cover;
@@ -97,24 +88,6 @@
             line-height: 1.5;
         }
 
-        @keyframes fade-out {
-            0% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
         #modeSelection.hideTransition {
             animation: fade-out 0.5s forwards;
         }
@@ -128,7 +101,7 @@
             padding: 10px;
             outline: none;
             border-radius: 5px;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Nunito-asset', sans-serif;
             border-style: none;
             font-size: 20px;
             backdrop-filter: blur(4px);
@@ -156,7 +129,7 @@
             margin-top: 40px;
             padding: 10px;
             border-radius: 50px;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Nunito-asset', sans-serif;
             font-size: 18px;
             border-style: solid;
             border-color: #FFFFFF;
@@ -187,7 +160,7 @@
             cursor: pointer;
             padding: 10px;
             border-radius: 50px;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Nunito-asset', sans-serif;
             font-size: 18px;
             border-style: solid;
             border-color: #FFFFFF;
@@ -300,7 +273,7 @@
 
     <div id="useUpload" class="hiddenForm">
 
-        <h1><span style="font-family: Metropolis-Bold, sans-serif;">upload a file</span></h1>
+        <h1><span style="font-family: Metropolis-Bold-asset, sans-serif;">upload a file</span></h1>
 
         <form method="POST" enctype="multipart/form-data">
             <label for="file-upload" class="fileUploadBox">
@@ -352,7 +325,7 @@
     </div>
 
     <div id="useExisting" class="hiddenForm">
-        <h1><span style="font-family: Metropolis-Bold, sans-serif;">use file on server</span></h1>
+        <h1><span style="font-family: Metropolis-Bold-asset, sans-serif;">use file on server</span></h1>
 
         <form method="POST" enctype="multipart/form-data">
 

@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/custom-fonts.css" rel="stylesheet">
 
     <title>asset-hoster</title>
 
     <style>
-        @font-face {
-            font-family: Metropolis;
-            src: url(/assets/Metropolis-Regular.woff2);
-        }
-
-        @font-face {
-            font-family: Metropolis-Bold;
-            src: url(/assets/Metropolis-Bold.woff2);
-        }
-
         .container {
             margin: 100px;
         }
 
         body {
-            font-family: Metropolis;
+            font-family: Metropolis-asset, sans-serif;
             font-size: 32px;
             background: url("/images/login-background.jpg") no-repeat center center fixed;
             -webkit-background-size: cover;
@@ -107,7 +97,7 @@
 
 <div class="container">
     <div class="words">
-        <h1><span style="font-family: Metropolis-Bold;">asset-hoster</span></h1>
+        <h1><span style="font-family: Metropolis-Bold-asset, sans-serif;">asset-hoster</span></h1>
         <p>
             There are {{ .numberOfFiles }} files hosted on this instance.
         </p>

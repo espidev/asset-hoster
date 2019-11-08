@@ -1,0 +1,42 @@
+@font-face {
+    font-family: Metropolis-asset;
+    src: url(/assets/Metropolis-Regular.woff2);
+}
+
+@font-face {
+    font-family: Metropolis-Bold-asset;
+    src: url(/assets/Metropolis-Bold.woff2);
+}
+
+@font-face {
+    font-family: Montserrat-asset;
+    src: url(/assets/Montserrat.woff2);
+}
+
+@font-face {
+    font-family: Nunito-asset;
+    src: url(/assets/Nunito.woff2);
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
