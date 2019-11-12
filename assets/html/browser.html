@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/custom-fonts.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>asset-hoster - Browse Files</title>
+
+    <style>
+
+        h1 {
+            font-size: 64px;
+            color: #FFFFFF;
+        }
+
+        @keyframes words-in {
+            0% {
+                transform: translateY(40px);
+                opacity: 0
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes blur-out {
+            100% {
+                filter: blur(0);
+            }
+        }
+
+        .container {
+            margin: 100px;
+        }
+
+        h1 {
+            animation: words-in 1s;
+        }
+
+        body {
+            font-family: Metropolis-asset, sans-serif;
+            font-size: 28px;
+            background: url("/images/login-background.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        @keyframes words-in {
+            0% {
+                transform: translateY(40px);
+                opacity: 0
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes blur-out {
+            100% {
+                filter: blur(0);
+            }
+        }
+
+        @keyframes button-hover {
+            50% {
+                transform: translateY(-2px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .files {
+            animation: words-in 1.5s;
+            margin-left: 400px;
+            padding: 0 10px;
+        }
+
+
+        .floaty {
+            padding: 10px;
+            height: 20px;
+            outline: none;
+            align-items: center;
+            border-radius: 5px;
+            font-family: 'Metropolis-asset', sans-serif;
+            border-style: none;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.3);
+            transition: box-shadow 0.5s, background 0.5s;
+            text-decoration: none;
+            display: flex;
+            color: white;
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        .floaty:hover {
+            box-shadow: 1px 1px 5px 0 #FFFFFF;
+            background: rgba(255, 255, 255, 0.6);
+            transition: box-shadow 0.5s, background 0.5s;
+            animation: button-hover 1s infinite;
+        }
+
+        .route {
+            float: left;
+        }
+
+        .time {
+            float: right;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            overflow-x: hidden;
+            padding: 20px 5px 20px 15px;
+            backdrop-filter: blur(7px);
+            box-shadow: 1px 1px 2px 0 rgba(255, 255, 255, 0.4);
+            transition: box-shadow 0.5s, width 1s;
+        }
+        .sidebar:hover {
+            box-shadow: 1px 1px 7px 0 rgba(255, 255, 255, 0.7);
+            width: 700px;
+            transition: box-shadow 0.5s, width 1s;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <a class="floaty" href="#"><div class="file-text"><i class="material-icons" style="font-size: 22px;">folder</i> ../</div></a>
+        <a class="floaty" href="#"><div class="file-text"><i class="material-icons" style="font-size: 22px;">folder</i> files</div></a>
+        <a class="floaty" href="#"><div class="file-text"><i class="material-icons" style="font-size: 22px;">folder</i> Downloads</div></a>
+        <a class="floaty" href="#"><div class="file-text"><i class="material-icons" style="font-size: 22px;">folder</i> Documents</div></a>
+        <a class="floaty" href="#"><div class="file-text"><i class="material-icons" style="font-size: 22px;">folder</i> Music</div></a>
+    </div>
+    <div class="files">
+        <h1><span style="font-family: Metropolis-Bold-asset, sans-serif;">manage files</span></h1>
+    </div>
+</div>
+</body>
+</html>

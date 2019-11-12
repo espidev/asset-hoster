@@ -131,6 +131,10 @@ func setupRoutes() {
 		c.HTML(http.StatusOK, "manage.html", db.Files)
 	})
 
+	admin.GET("/browser", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "browser.html", db.Files)
+	})
+
 	admin.GET("/logout", func(c *gin.Context) {
 		c.SetCookie("GOSESSID", "", 0, "/", config.Domain, false, false)
 		c.Redirect(302, "login")
